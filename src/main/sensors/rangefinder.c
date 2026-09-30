@@ -148,6 +148,14 @@ static bool rangefinderDetect(rangefinderDev_t * dev, uint8_t rangefinderHardwar
             }
 #endif
             break;
+        case RANGEFINDER_US100:
+#if defined(USE_RANGEFINDER_US100)
+            if (virtualRangefinderDetect(dev, &rangefinderUS100Vtable)) {
+                rangefinderHardware = RANGEFINDER_US100;
+                rescheduleTask(TASK_RANGEFINDER, TASK_PERIOD_MS(RANGEFINDER_VIRTUAL_TASK_PERIOD_MS));
+            }
+#endif
+            break;
 
             case RANGEFINDER_US42:
 #ifdef USE_RANGEFINDER_US42

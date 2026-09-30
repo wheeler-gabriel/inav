@@ -40,6 +40,9 @@
 #include "io/vtx_string.h"
 #include "io/vtx.h"
 
+#include "common/log.h"
+
+
 
 // Config-time settings
 static uint8_t  vtxBand = 0;
