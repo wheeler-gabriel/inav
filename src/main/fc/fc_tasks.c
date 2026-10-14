@@ -83,6 +83,7 @@
 #include "sensors/sensors.h"
 #include "sensors/acceleration.h"
 #include "sensors/temperature.h"
+#include "sensors/gas.h"
 #include "sensors/barometer.h"
 #include "sensors/battery.h"
 #include "sensors/compass.h"
@@ -366,6 +367,9 @@ void fcTasksInit(void)
 #endif
     setTaskEnabled(TASK_BATTERY, feature(FEATURE_VBAT) || isAmperageConfigured());
     setTaskEnabled(TASK_TEMPERATURE, true);
+#ifdef USE_GAS_SENSOR
+    setTaskEnabled(TASK_GAS, isGasSensorEnabled());
+#endif
     setTaskEnabled(TASK_RX, true);
 #ifdef USE_GPS
     setTaskEnabled(TASK_GPS, feature(FEATURE_GPS));
@@ -523,6 +527,15 @@ cfTask_t cfTasks[TASK_COUNT] = {
         .desiredPeriod = TASK_PERIOD_HZ(100),     // 100 Hz
         .staticPriority = TASK_PRIORITY_LOW,
     },
+
+#ifdef USE_GAS_SENSOR
+    [TASK_GAS] = {
+        .taskName = "GAS",
+        .taskFunc = gasUpdate,
+        .desiredPeriod = TASK_PERIOD_HZ(20),      // 20 Hz
+        .staticPriority = TASK_PRIORITY_LOW,
+    },
+#endif
 
     [TASK_RX] = {
         .taskName = "RX",

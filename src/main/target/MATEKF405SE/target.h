@@ -105,6 +105,8 @@
 #define VBUS_SENSING_PIN        PC13
 #define VBUS_SENSING_ENABLED
 
+#define USE_GAS_SENSOR
+
 #define USE_UART1
 #define UART1_TX_PIN            PA9
 #define UART1_RX_PIN            PA10

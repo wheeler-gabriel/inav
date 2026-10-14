@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-extern const uint16_t vtx58frequencyTable[5][8];
+extern const uint16_t vtx58frequencyTable[6][8];
 extern const char * const vtx58BandNames[];
 extern const char * const vtx58ChannelNames[];
 extern const char * const vtx58DefaultPowerNames[];

@@ -88,6 +88,8 @@
 #define USE_RANGEFINDER_USD1_V0
 #define USE_RANGEFINDER_NANORADAR
 
+#define USE_GAS_SENSOR
+
 // Allow default optic flow boards
 #define USE_OPFLOW
 #define USE_OPFLOW_CXOF

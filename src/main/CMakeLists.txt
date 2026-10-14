@@ -463,6 +463,8 @@ main_sources(COMMON_SRC
     sensors/sensors.c
     sensors/temperature.c
     sensors/temperature.h
+    sensors/gas.h
+    sensors/gas.c
 
     blackbox/blackbox.c
     blackbox/blackbox.h

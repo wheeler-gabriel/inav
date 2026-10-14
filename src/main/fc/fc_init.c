@@ -140,6 +140,7 @@
 #include "sensors/boardalignment.h"
 #include "sensors/compass.h"
 #include "sensors/gyro.h"
+#include "sensors/gas.h"
 #include "sensors/initialisation.h"
 #include "sensors/pitotmeter.h"
 #include "sensors/rangefinder.h"
@@ -441,6 +442,10 @@ void init(void)
             i2cInit(I2CDEV_EMULATED);
     #endif
 #endif
+#endif
+
+#ifdef USE_GAS_SENSOR
+    gasInit();
 #endif
 
 #ifdef USE_ADC

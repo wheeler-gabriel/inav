@@ -111,6 +111,7 @@
 #include "sensors/pitotmeter.h"
 #include "sensors/temperature.h"
 #include "sensors/esc_sensor.h"
+#include "sensors/gas.h"
 #include "sensors/rangefinder.h"
 
 #include "programming/logic_condition.h"
@@ -1733,6 +1734,19 @@ static bool osdDrawSingleElement(uint8_t item)
             }
             break;
         }
+
+#ifdef USE_GAS_SENSOR
+    case OSD_GAS_SENSOR:
+        if (!isGasSensorHealthy()) {
+            strcpy(buff, "GAS --");
+        } else if (isGasDetected()) {
+            strcpy(buff, "GAS !!");
+            TEXT_ATTRIBUTES_ADD_BLINK(elemAttr);
+        } else {
+            strcpy(buff, "GAS OK");
+        }
+        break;
+#endif
 
     case OSD_MAIN_BATT_VOLTAGE: {
         uint8_t base_digits = 2U;
